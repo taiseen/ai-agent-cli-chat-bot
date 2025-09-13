@@ -1,30 +1,43 @@
 import { MessagesAnnotation, StateGraph } from '@langchain/langgraph';
-import { HumanMessage } from '@langchain/core/messages';
+import { ChatGroq } from '@langchain/groq';
 import readLine from 'node:readline/promises';
 
 
 
+// Initialize the LLM
+const llm = new ChatGroq({
+    model: 'openai/gpt-oss-120b',
+    temperature: 0, // no creativity
+    maxRetries: 2,
+});
+
+
+
 // Define Nodes --> functions
-const callModelNode = async (state) => {
+async function callModelNode(state) {
+    // call the LLM here & append AI response
+    const aiResponseMessage = await llm.invoke(state.messages);
 
-    console.log('calling model');
-
-    return state
+    // all message concatenated here...
+    return { messages: [aiResponseMessage] };
 }
 
 
+
 // Define Edges --> build the graph
-const workflowOfGraph = new StateGraph(MessagesAnnotation)
+const workflow = new StateGraph(MessagesAnnotation)
     .addNode('agent', callModelNode)
     .addEdge('__start__', 'agent')
     .addEdge('agent', '__end__');
 
 
+
 // Define Graph --> compile & invoke the graph
-const app = workflowOfGraph.compile();
+const app = workflow.compile();
 
 
-const main = async () => {
+
+async function main() {
 
     const rl = readLine.createInterface({
         input: process.stdin,
@@ -36,11 +49,19 @@ const main = async () => {
         const userInput = await rl.question(`You: `);
         if (userInput === '/e') break;
 
+
         const finalState = await app.invoke({
-            message: [{ role: 'user', content: userInput }]
+            messages: [{ role: 'user', content: userInput }]
         });
 
-        console.log('You said: ' + JSON.stringify(finalState, null, 2));
+
+        // console.log('You said: ' + JSON.stringify(finalState, null, 2));
+
+
+        const lastMessage = finalState.messages[finalState.messages.length - 1];
+
+
+        console.log('AI : ' + lastMessage.content);
 
     }
 
