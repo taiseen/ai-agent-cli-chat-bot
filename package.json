@@ -1,7 +1,10 @@
 {
   "name": "ai-agent-cli-chat-bot",
-  "module": "index.js",
+  "module": "app.js",
   "type": "module",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -11,6 +14,7 @@
   "dependencies": {
     "@langchain/core": "^0.3.75",
     "@langchain/groq": "^0.2.3",
-    "@langchain/langgraph": "^0.4.9"
+    "@langchain/langgraph": "^0.4.9",
+    "dotenv": "^17.2.2"
   }
 }

@@ -10,20 +10,6 @@ An intelligent conversational agent powered by LangGraph + Groq.
 2. Agent can browse the internet
 3. Agent can remember the full conversation
 
-> To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.js
-```
-
-This project was created using `bun init`
-
 ### 🤖 AI Agent
 
 > 💡 This is not just a chatbot — it's an **AI agent**:  
@@ -44,19 +30,33 @@ This project was created using `bun init`
 | bun add @langchain/langgraph  | Manage stateful conversation flow        |
 | bun add @langchain/groq       | Connects fast with LLMs                  |
 
-#
+> To install dependencies:
+
+This project was created using `bun init`
+
+```bash
+bun install
+```
+
+To run:
+
+```bash
+bun run index.js
+```
 
 Node version run system
 
 ```js
-node --env-file=.env index.js 
+node --env-file=.env ./src/index.js 
 ```
 
-### 📎 References
+### 🌐 References
 
 - [Js LangChain Doc](https://js.langchain.com/docs/integrations/chat/groq)
-- [API Key](https://console.groq.com/keys)
+- [Groq API Key](https://console.groq.com/keys)
+- [Tavily API Key](https://app.tavily.com/home)
+- [Tavily Doc](https://docs.tavily.com/documentation/about)
 
 ### ✅ Final Checklist Before Running
 
-> `.env` file created with `GROQ_API_KEY` = ... ... ...
+> create `.env` file with proper `key = value`
