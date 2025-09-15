@@ -1,4 +1,5 @@
 import { ChatGroq } from "@langchain/groq";
+import { tools } from "../tools/index.js";
 import config from "../config/index.js";
 
 
@@ -11,4 +12,4 @@ const llmConfig = {
 
 
 // Initialize the LLM
-export const llm = new ChatGroq(llmConfig);
+export const llm = new ChatGroq(llmConfig).bindTools(tools);
