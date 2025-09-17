@@ -29,6 +29,16 @@ An intelligent conversational agent powered by LangGraph + Groq.
   - Tool Message
     - after tool execute, generated message send back to the AI
 
+- By design AI Models are stateless
+  - cant remember previous question or chat topic
+  - for that every new chat we send all previous chat history
+  - and its work like memory or context awareness
+  - so in short - previous all chat history called - context
+
+- Context Window:- mean
+  - how much token we can send to the llm in one short...
+  - how much token can process by llm
+
 [langGraph]:https://www.langchain.com
 
 ### 📦 Packages
