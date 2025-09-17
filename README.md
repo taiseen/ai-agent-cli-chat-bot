@@ -68,15 +68,17 @@ bun start
 
 ### Conceptual Data Flow
 
-![image](./img/ai-agent-1.png)
-![image](./img/ai-agent-2.png)
+![image](./src/assets/ai-agent-1.png)
+![image](./src/assets/ai-agent-2.png)
 
 ## Example Questions:-
 
 - when was world war 2 happen?
 - when was iphone 17 launched?
-- what is the weather in Dhaka?
-- what is the current stork market info about dhaka?
+- what is the weather in dhaka?
+- what is the current stork market info in dhaka?
+- (For memory testing) - I stay in dhaka.
+  - where i stay?
   
 ## Example of:- AI Message Response Structure
 

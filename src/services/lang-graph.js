@@ -1,10 +1,13 @@
 import { MessagesAnnotation, StateGraph } from '@langchain/langgraph';
 import { ToolNode } from '@langchain/langgraph/prebuilt';
+import { MemorySaver } from "@langchain/langgraph";
 import { tools } from '../tools/index.js';
 import { llm } from '../robot/llm.js';
 
 
 
+
+const memory = new MemorySaver();
 
 const toolsNode = new ToolNode(tools);
 
@@ -57,4 +60,4 @@ const workflow = new StateGraph(MessagesAnnotation)
 
 
 // Define Graph --> compile & invoke the graph
-export const langGraphApp = workflow.compile();
+export const langGraphApp = workflow.compile({ checkpointer: memory });
